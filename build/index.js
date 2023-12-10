@@ -90,16 +90,44 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 
-// Registering the block to show in the backend.
-wp.blocks.registerBlockType("alpa-plugin/alpha-obj", {
+// Registering the block to show in the backend's Block Editor blocks panel.
+wp.blocks.registerBlockType("alpha-plugin/alpha-obj", {
   title: "Inline OBJ Questions",
   icon: "smiley",
   category: "common",
-  edit: function () {
-    return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, "Hello Here");
+  attributes: {
+    skyColor: {
+      type: "string"
+    },
+    grassColor: {
+      type: "string"
+    }
   },
-  save: function () {
-    return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, "Hello Frontend");
+  edit: function (props) {
+    function updateSkyColor(e) {
+      props.setAttributes({
+        skyColor: e.target.value
+      });
+    }
+    function updateGrassColor(e) {
+      props.setAttributes({
+        grassColor: e.target.value
+      });
+    }
+    return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
+      type: "text",
+      placeholder: "sky color",
+      value: props.attributes.skyColor,
+      onChange: updateSkyColor
+    }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
+      type: "text",
+      placeholder: "grass color",
+      value: props.attributes.grassColor,
+      onChange: updateGrassColor
+    }));
+  },
+  save: function (props) {
+    return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, "Today the sky is ", (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("strong", null, props.attributes.skyColor), " and the grass is ", (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("strong", null, props.attributes.grassColor), "."));
   }
 });
 })();
