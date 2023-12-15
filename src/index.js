@@ -1,3 +1,7 @@
+import "./index.scss"
+import { TextControl, Flex, FlexBlock, FlexItem, Button, Icon } from "@wordpress/components"
+
+
 
 // Registering the block to show in the backend's Block Editor blocks panel.
 wp.blocks.registerBlockType("alpha-plugin/alpha-obj", {
@@ -8,7 +12,13 @@ wp.blocks.registerBlockType("alpha-plugin/alpha-obj", {
         skyColor: { type: "string" },
         grassColor: {type: "string"}
     },
-    edit: function (props) {
+    edit: EditComponent,
+    save: function(props){
+        return null;
+    }
+});
+
+function EditComponent(props) {
         function updateSkyColor(e) {
             props.setAttributes({skyColor: e.target.value})
         }
@@ -16,17 +26,25 @@ wp.blocks.registerBlockType("alpha-plugin/alpha-obj", {
             props.setAttributes({grassColor: e.target.value})
         }
         return (
-            <>
-                <input type="text" placeholder="sky color" value={ props.attributes.skyColor } onChange={updateSkyColor} />
-                <input type="text" placeholder="grass color" value={ props.attributes.grassColor } onChange={updateGrassColor} />
-            </>
-        )
-    },
-    save: function(props){
-        return (
-            <>
-                <p>Today the sky is <strong>{props.attributes.skyColor}</strong> and the grass is <strong>{props.attributes.grassColor}</strong>.</p>
-            </>
+            <div className="alpha-obj-edit">
+                <TextControl label="Question:" /> 
+                <p>Answers:</p>
+                <Flex>
+                    <FlexBlock>
+                        <TextControl />
+                    </FlexBlock>
+                    <FlexItem>
+                        <Button>
+                        <Icon icon="star-empty" className="mark-as-correct"/>    
+                        </Button>
+                    </FlexItem>
+                    <FlexItem>
+                        <Button className="answer-delete">
+                            <Icon icon="trash"/>
+                        </Button>
+                    </FlexItem>
+                    <FlexItem></FlexItem>
+                </Flex>
+            </div>
         )
     }
-});

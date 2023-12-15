@@ -1,0 +1,25 @@
+/*!***************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/index.scss ***!
+  \***************************************************************************************************************************************************************************************************************************************/
+.alpha-obj-edit {
+  padding: 20px;
+  border-radius: 2px;
+  border: 1px solid #d6d6d6;
+  background-color: rgba(241, 241, 241, 0.9450980392);
+}
+.alpha-obj-edit .mark-as-correct {
+  color: #ffd700;
+  cursor: pointer;
+  position: relative;
+  top: -3px;
+}
+.alpha-obj-edit .answer-delete {
+  color: #ff0000;
+  position: relative;
+  top: -5px;
+}
+.alpha-obj-edit .answer-delete:hover {
+  color: #c20000 !important;
+}
+
+/*# sourceMappingURL=index.css.map*/
